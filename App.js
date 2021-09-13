@@ -1,10 +1,25 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-function App(){
+const App = () => {
+
+  const [like, setLike] = useState(0);
+
+  const incrementLike = () => {
+    setLike(like + 1);
+  }
+
+  const handleLikeButton = () => {
+    incrementLike();
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text>Olá mundo</Text>
+      <Text style={styles.text}>Likes: {like}</Text>
+      <TouchableOpacity onPress={handleLikeButton}>
+        <Text>Like</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -14,6 +29,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  text: {
+    fontSize: 22,
+    color: '#00f'
   },
 })
 
